@@ -5,59 +5,116 @@
   padding: 0;
 }
 
+:root {
+  --loreal-black: #111111;
+  --loreal-gold: #c8a46a;
+  --loreal-soft-gold: #e3cfaa;
+  --loreal-ivory: #f7f3ec;
+  --loreal-charcoal: #2f2f2f;
+  --loreal-gray: #666666;
+}
+
 /* —— body + fonts —— */
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  color: var(--loreal-charcoal);
   display: flex;
   justify-content: center;
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    #ffffff 0%,
+    var(--loreal-ivory) 58%,
+    #f0e8db 100%
+  );
 }
 
 .page-wrapper {
   width: 90%;
   max-width: 900px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 /* header */
 .site-header {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 40px;
+}
+
+.brand-logo {
+  width: 190px;
+  max-width: 55%;
+  height: auto;
+}
+
+.brand-tagline {
+  margin-top: 10px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 0.08em;
+  font-size: 1.1rem;
+  color: var(--loreal-gold);
 }
 
 .site-title {
-  font-size: 22px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  letter-spacing: 0.03em;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin: 10px 0 14px;
+  color: var(--loreal-black);
 }
 
 /* chat window */
 .chatbox {
-  margin: 40px 0;
+  margin: 24px 0 36px;
 }
 
 .chat-window {
   height: 360px;
-  border: 1px solid #000;
+  border: 1px solid var(--loreal-soft-gold);
+  border-radius: 16px;
   padding: 20px;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   white-space: pre-line;
 }
 
 /* messages */
 .msg {
-  margin-bottom: 14px;
-  line-height: 1.5;
+  margin: 0;
+  line-height: 1.45;
+  max-width: 82%;
+  width: fit-content;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid transparent;
 }
 
 .msg.user {
-  color: #000;
+  align-self: flex-end;
+  background: var(--loreal-black);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
 }
 
 .msg.ai {
-  color: #666666;
+  align-self: flex-start;
+  background: #fcf8f1;
+  color: var(--loreal-charcoal);
+  border-color: #eadbc0;
+  border-bottom-left-radius: 4px;
 }
 
 /* input row */
@@ -70,23 +127,26 @@ body {
 .chat-form input {
   flex: 1;
   padding: 12px;
-  border: 1px solid #ccc;
-  font-size: 18px;
+  border: 1px solid #d8c39f;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fffefb;
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
+  outline: 2px solid var(--loreal-gold);
   outline-offset: 2px;
 }
 
 .chat-form button {
-  font-size: 18px;
-  background: #000;
-  color: #fff;
+  font-size: 1rem;
+  background: var(--loreal-black);
+  color: #ffffff;
   border: none;
   padding: 12px;
   width: 48px;
   height: 48px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,11 +159,11 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #292929;
 }
 
 .chat-form button:focus {
-  outline: 2px solid #000;
+  outline: 2px solid var(--loreal-gold);
   outline-offset: 2px;
 }
 
@@ -122,10 +182,56 @@ body {
 
 /* footer */
 .site-footer {
-  margin: 60px 0 40px;
+  margin-top: auto;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  padding: 26px 22px 24px;
   text-align: center;
   font-size: 14px;
-  color: #666;
+  color: #f5efe5;
+  background: linear-gradient(120deg, #0c0c0c 0%, #1b1b1b 68%, #3b2f1a 100%);
+  border-top: 1px solid #2f2f2f;
+}
+
+.footer-inner {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--loreal-soft-gold);
+  margin-bottom: 8px;
+}
+
+.case-study {
+  text-align: left;
+  margin-bottom: 26px;
+  padding: 20px;
+  border-left: 4px solid var(--loreal-gold);
+  background: linear-gradient(135deg, #ffffff 0%, #fbf6ee 100%);
+  border-radius: 8px;
+}
+
+.case-study h2 {
+  margin-bottom: 12px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.7rem;
+  color: var(--loreal-black);
+}
+
+.case-study p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.case-study a {
+  color: var(--loreal-black);
+  font-weight: 700;
+  text-decoration-color: var(--loreal-gold);
 }
 
 .site-footer nav {
@@ -134,10 +240,34 @@ body {
 
 .site-footer a {
   margin: 0 8px;
-  color: #000;
+  color: #ffffff;
   text-decoration: none;
+  opacity: 0.92;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: var(--loreal-soft-gold);
+}
+
+@media (max-width: 700px) {
+  .site-title {
+    font-size: 1.65rem;
+  }
+
+  .chat-window {
+    height: 320px;
+  }
+
+  .case-study {
+    padding: 16px;
+  }
+
+  .site-footer {
+    padding: 22px 14px;
+  }
+
+  .site-footer a {
+    display: inline-block;
+    margin: 4px 8px;
+  }
 }
