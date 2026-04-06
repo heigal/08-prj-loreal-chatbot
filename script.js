@@ -102,9 +102,6 @@ chatForm.addEventListener("submit", async (e) => {
   const prompt = userInput.value.trim();
   if (!prompt) return;
 
-  // Show only the current turn in the UI. Context is still preserved in `messages`.
-  chatWindow.innerHTML = "";
-
   if (!canAnswerPrompt(prompt)) {
     addMessage("user", prompt);
     userInput.value = "";
